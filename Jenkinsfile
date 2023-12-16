@@ -14,14 +14,14 @@ pipeline {
         sh 'docker build -t naaz1/java-app:1.4 .'
       }
     }
-   // // stage('Docker push'){
-   //      steps{
-   //          withCredentials([usernamePassword(credentialsid:'docker-cred', passwordVariable:'pwd',usernameVariable: 'uName')]){
-   //              sh "docker login -u${uName} -p ${pwd}"
-   //              sh "docker push naaz1/java-app:1.4"
-   //          }
-   //      }
-    // }
+    stage('Docker push'){
+       steps{
+            withCredentials([usernamePassword(credentialsId: 'hub-credentials', passwordVariable: 'hubPwd', usernameVariable: 'hubUser')]) {
+     sh "docker login -u ${hubUser} -p ${hubPwd}"
+       sh "docker push docker0237/java-tech:0.0.2"      
+            }
+        }
+     }
   }
 }
                                           
