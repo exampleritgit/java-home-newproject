@@ -13,7 +13,15 @@ pipeline {
       steps{
         sh 'docker build -t naaz1/java-app:1.4 .'
       }
-    }                              
+    }
+    stage('Docker push'){
+        steps{
+            withCredentials([usernamePassword(credentialsid:'docker-cred', passwordVariable:'pwd',usernameVariable: 'uName')]){
+                sh "docker login -u${uName} -p ${pwd}"
+                sh "docker push naaz1/java-app:1.4"
+            }
+        }
+    }
   }
 }
                                           }
