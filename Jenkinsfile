@@ -11,7 +11,7 @@ pipeline {
     }
     stage ('Docker build') {
       steps{
-        sh 'docker build -t naaz1/java-app:1.4 .'
+        sh 'docker build -t docker0237/java-tech:0.0.2 .'
       }
     }
     stage('Docker push'){
