@@ -13,15 +13,7 @@ pipeline {
       steps{
         sh 'docker build -t naaz1/java-app:1.4 .'
       }
-    }
-  //  stage('push docker image to docker hub'){
-      steps{
-         withcredentials(usernamePassword(credentialsId: 'hub-credentials', passwordVariable: 'hubPwd', usernameVariable: 'hub
-                    sh "docker login -u ${hubUser} -p ${hubPwd}"   
-                      sh "docker build -t naaz1/java-app:1.4"                    
-      }
-    }//
-                                          
+    }                              
   }
 }
                                           }
